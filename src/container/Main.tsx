@@ -1,12 +1,13 @@
 import React from "react"
+import LandingPage from "../components/LandingPage/LandingPage";
 import "./../styles.main.css"
 
 const Main = () => {
   return (
-    <div className="main-container">
-      <h1>Omar</h1>
-    </div>
-  )
-}
+    <>
+      <LandingPage/>
+    </>
+  );
+};
 
 export default Main;
