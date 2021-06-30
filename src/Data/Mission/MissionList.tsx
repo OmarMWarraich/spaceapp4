@@ -19,4 +19,4 @@ const MissionsList: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default MissionsList
+export default MissionsList;

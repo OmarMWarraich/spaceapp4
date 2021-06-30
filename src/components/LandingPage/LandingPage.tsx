@@ -1,12 +1,12 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
-import "./../../styles/landingPage.css";
+import "./landingPage.css";
 import { Button } from "react-bootstrap";
+import Header from "../Header/Header";
 
 export default function LandingPage() {
   return (
     <div className="landing-page-container">
-      <NavBar />
+      <Header />
       <div className="content">
         
         <h1>SpaceX</h1>
@@ -17,7 +17,7 @@ export default function LandingPage() {
           and connectivity becomes available. Rest is History!
 
         </p>
-        <Button variant="success">Launches</Button>
+        <Button className="launches-btn" variant="success">Launches</Button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react"
-import { useLaunchInfoQuery } from "./../../generated/graphql"
+import { useLaunchInfoQuery } from "../../generated/graphql"
 import MissionInfoList from "./MissionInfoList"
 
 const MissionInfo = () => {
