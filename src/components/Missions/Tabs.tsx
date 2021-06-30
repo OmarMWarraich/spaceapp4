@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -54,6 +54,17 @@ export default function ScrollableTabsButtonAuto() {
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
+    
+    // Dummy State
+    const [dummyArray, setDummyArray] = useState([
+        "Fakon",
+        "Item Two",
+        "Item Three",
+        "Item Four",
+        "Item Five",
+        "Item Six",
+        "Item Seven",
+    ]);
 
     return (
         <div className={classes.root}>
@@ -67,16 +78,43 @@ export default function ScrollableTabsButtonAuto() {
                   scrollButtons="auto"
                   aria-label="scrollable auto tabs example"  
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
+                    {/* API DATA */}
+                    {dummyArray.map((label, index) => {
+                        return <Tab label={label} {...a11yProps(index)} />;
+                    })}
+                    {/* // */}
+                    {/* 
+                    <Tab label="Fakon" {...a11yProps(0)} />
                     <Tab label="Item Two" {...a11yProps(1)} />
                     <Tab label="Item Three" {...a11yProps(2)} />
                     <Tab label="Item Four" {...a11yProps(3)} />
                     <Tab label="Item Five" {...a11yProps(4)} />
                     <Tab label="Item Six" {...a11yProps(5)} />
-                    <Tab label="Item Seven" {...a11yProps(6)} />
+                    <Tab label="Item Seven" {...a11yProps(6)} /> */}
                 </Tabs>
             </AppBar>
-            <TabPanel value={value} index={0}>Item One</TabPanel>
+
+            <TabPanel value={value} index={0}>
+                <h2 className="title">Name</h2>
+                <p className="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis natus
+                    laudantium voluptatum. At accusantium eius alias! Cupiditate, minima!
+                    Autem voluptatem rerum consequuntur rem est quod dolores sint dolore
+                    ab laborum. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Sit facere, ducimus qui, vel porro reiciendis, perspiciatis nemo sapiente
+                    nihil libero quam! Aut aliquid impedit rem, iusto voluptates similique 
+                    laboriosam. Explicabo!
+                </p>
+                <div className="status-year-container">
+                    <div className="status">Success</div>
+                    <div className="year">2021</div>
+                </div>
+                <div className="social-media-container">
+                    <div className="website">Website</div>
+                    <div className="wikipedia">Wikipedia</div>
+                    <div className="video">Video</div>
+                </div>
+                </TabPanel>
             <TabPanel value={value} index={1}>Item Two</TabPanel>
             <TabPanel value={value} index={2}>Item Three</TabPanel>
             <TabPanel value={value} index={3}>Item Four</TabPanel>
