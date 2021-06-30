@@ -8,6 +8,7 @@ export default function LandingPage() {
     <div className="landing-page-container">
       <NavBar />
       <div className="content">
+        
         <h1>SpaceX</h1>
         <p>
           SpaceX innovates, designs, builds and delpoys advanced rockets, 
