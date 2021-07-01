@@ -1,6 +1,6 @@
 import React from "react"
 import { useLaunchesInfoQuery } from "../../generated/graphql"
-import MissionsList from "./MissionList"
+import MissionsList from "./MissionsList"
 
 const Mission = () => {
   // Get Data
