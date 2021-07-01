@@ -98,6 +98,7 @@ export default function ScrollableTabsButtonAuto() {
             </AppBar>
 
             <TabPanel value={value} index={0}>
+                <div className="content-container">
                 <h2 className="title">Thaicom 6&nbsp;(2014)</h2>
                 <div className="underline"></div>
                 <p className="description">
@@ -117,6 +118,7 @@ export default function ScrollableTabsButtonAuto() {
                     <button className="button website">Article</button>
                     <button className="button wikipedia">Wikipedia</button>
                     <button className="button twitter">Video</button>
+                </div>
                 </div>
                 </TabPanel>
             <TabPanel value={value} index={1}>Item Two</TabPanel>
