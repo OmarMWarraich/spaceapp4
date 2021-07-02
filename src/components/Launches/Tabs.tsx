@@ -8,29 +8,29 @@ import Box from "@material-ui/core/Box";
 import "./launches.css";
 
 interface TabPanelProps {
-    children?: React.ReactNode;
-    index: any;
-    value: any;
+  children?: React.ReactNode;
+  index: any;
+  value: any;
 }
 
 const TabPanel = (props: TabPanelProps) => {
-    const {children, value, index, ...other } = props;
+  const {children, value, index, ...other } = props;
 
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`scrollable-auto-tabpanel-${index}`}
-        aria-labelledby={`scrollable-auto-tabpanel-${index}`}
-        {...other}
-      >
-        {value === index &&(
-          <Box p={3}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tabpanel-${index}`}
+      {...other}
+    >
+      {value === index &&(
+        <Box p={3}>
+        <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
 };
 
 function a11yProps(index:any) {
@@ -118,8 +118,6 @@ export default function ScrollableTabsButtonAuto() {
       );
     })}
     {/*  */}
-
-
 
     {/* <TabPanel value={value} index={0}}>
       <div className="content-container">
