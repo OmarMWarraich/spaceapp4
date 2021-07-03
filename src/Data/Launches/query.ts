@@ -1,13 +1,20 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
-export const MissionsInfo = gql`
-    query MissionsInfo{
-        missions(limit: 10) {
-            description
-            website
-            wikipedia
-            twitter
-            name
-        }
+// Query to get all launches
+
+export const Launches = gql`
+query Launches{
+    launches(limit: 40) {
+      mission_id
+      mission_name
+      launch_success
+      launch_year
+      details
+      links {
+        article_link
+        wikipedia
+        video_link
+      }
     }
-    `;
+  }
+` 

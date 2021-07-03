@@ -1,12 +1,17 @@
 import React from "react"
 import LandingPage from "../components/LandingPage/LandingPage";
-import Missions from "../components/Launches/Launches";
+import Launches from "../components/Launches/Launches";
+import LaunchesContainer from "../Data/Launches";
 import "./main.css";
 
 const Main = () => {
   return (
     <>
-      <Missions/>
+      <div className="main-container">
+        <LandingPage />
+        <Launches />
+      </div>
+      
     </>
   );
 };
