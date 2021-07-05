@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <div className="landing-page-container">
       <Header />
-      <div className="content">
+      <div className="content" id="home-section">
         
         <h1>SpaceX</h1>
         <p>
@@ -17,7 +17,11 @@ export default function LandingPage() {
           and connectivity becomes available. Rest is History!
 
         </p>
-        <Button className="launches-btn" variant="success">Launches</Button>
+        <a href="#launches-section">
+        <Button className="launches-btn" variant="success">
+          Launches
+          </Button>
+        </a>
       </div>
     </div>
   );
