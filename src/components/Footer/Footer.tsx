@@ -4,7 +4,7 @@ import "./footer.css";
 export default function Footer() {
     return (
         <div className="footer-container">
-            <h5>Developer: Omar Mohammad</h5>
+            <h5 className="developer-info">Developer: Omar Mohammad</h5>
             <div className="icons-container">
                 <a rel="norefferer" href="https://github.com/OmarMWarraich">
                     <i className="fab fa-github icon"></i>

@@ -2,6 +2,7 @@ import React from "react";
 import "./landingPage.css";
 import { Button } from "react-bootstrap";
 import Header from "../Header/Header";
+import { animateScroll as scroll, Link } from "react-scroll";
 
 export default function LandingPage() {
   return (
@@ -17,11 +18,19 @@ export default function LandingPage() {
           and connectivity becomes available. Rest is History!
 
         </p>
-        <a href="#launches-section">
-        <Button className="launches-btn" variant="success">
+        
+        <Link 
+          className="launches-btn"
+          to="launches-section"
+          spy={true}
+          smooth={true}
+          delay={100}
+          offset={-200}
+          duration={500}
+          >
+          
           Launches
-          </Button>
-        </a>
+          </Link>
       </div>
     </div>
   );
