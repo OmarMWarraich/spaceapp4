@@ -1,10 +1,8 @@
+
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -16,17 +14,187 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Query = {
+  __typename?: 'Query';
+  capsule?: Maybe<Capsule>;
+  capsules?: Maybe<Array<Maybe<Capsule>>>;
+  core?: Maybe<Core>;
+  cores?: Maybe<Array<Maybe<Core>>>;
+  dragon?: Maybe<Dragon>;
+  dragons?: Maybe<Array<Maybe<Dragon>>>;
+  history?: Maybe<Array<Maybe<History>>>;
+  info?: Maybe<Info>;
+  landingpad?: Maybe<Landingpad>;
+  landingpads?: Maybe<Array<Maybe<Landingpad>>>;
+  launch?: Maybe<Launch>;
+  launches?: Maybe<Array<Maybe<Launch>>>;
+  launchpad?: Maybe<Launchpad>;
+  launchpads?: Maybe<Array<Maybe<Launchpad>>>;
+  mission?: Maybe<Mission>;
+  missions?: Maybe<Array<Maybe<Mission>>>;
+  payload?: Maybe<Payload>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
+  roadster?: Maybe<Roadster>;
+  rocket?: Maybe<Rocket>;
+  rockets?: Maybe<Array<Maybe<Rocket>>>;
+  ship?: Maybe<Ship>;
+  ships?: Maybe<Array<Maybe<Ship>>>;
+};
+
+
+export type QueryCapsuleArgs = {
+  capsule_serial: Scalars['String'];
+};
+
+
+export type QueryCapsulesArgs = {
+  range?: Maybe<CapsuleRange>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCoreArgs = {
+  core_serial: Scalars['String'];
+};
+
+
+export type QueryCoresArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryDragonArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryDragonsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryHistoryArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLandingpadArgs = {
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLandingpadsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryLaunchArgs = {
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLaunchesArgs = {
+  range?: Maybe<LaunchRange>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+export type QueryLaunchpadArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryLaunchpadsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryMissionArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryMissionsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryPayloadArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryPayloadsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryRocketArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryRocketsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryShipArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryShipsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order?: Maybe<Order>;
+  sort?: Maybe<Scalars['String']>;
+};
+
+export enum CapsuleRange {
+  Past = 'past',
+  Upcoming = 'upcoming'
+}
+
+export enum LaunchRange {
+  Latest = 'latest',
+  Next = 'next',
+  Past = 'past',
+  Upcoming = 'upcoming'
+}
+
+export enum Order {
+  Asc = 'asc',
+  Desc = 'desc'
+}
 
 export type BasicMission = {
   __typename?: 'BasicMission';
   name?: Maybe<Scalars['String']>;
   flight?: Maybe<Scalars['Int']>;
 };
-
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-}
 
 export type Capsule = {
   __typename?: 'Capsule';
@@ -41,11 +209,6 @@ export type Capsule = {
   details?: Maybe<Scalars['String']>;
   reuse_count?: Maybe<Scalars['Int']>;
 };
-
-export enum CapsuleRange {
-  Past = 'past',
-  Upcoming = 'upcoming'
-}
 
 export type Core = {
   __typename?: 'Core';
@@ -228,12 +391,19 @@ export type LaunchLinks = {
   flickr_images?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export enum LaunchRange {
-  Latest = 'latest',
-  Next = 'next',
-  Past = 'past',
-  Upcoming = 'upcoming'
-}
+export type Launchpad = {
+  __typename?: 'Launchpad';
+  id?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['String']>;
+  location?: Maybe<Location>;
+  vehicles_launched?: Maybe<Array<Maybe<Scalars['String']>>>;
+  attempted_launches?: Maybe<Scalars['Int']>;
+  successful_launches?: Maybe<Scalars['Int']>;
+  wikipedia?: Maybe<Scalars['String']>;
+  details?: Maybe<Scalars['String']>;
+  site_id?: Maybe<Scalars['String']>;
+  site_name_long?: Maybe<Scalars['String']>;
+};
 
 export type LaunchRocket = {
   __typename?: 'LaunchRocket';
@@ -333,20 +503,6 @@ export type LaunchTimeline = {
   dragon_bay_door_deploy?: Maybe<Scalars['Int']>;
 };
 
-export type Launchpad = {
-  __typename?: 'Launchpad';
-  id?: Maybe<Scalars['Int']>;
-  status?: Maybe<Scalars['String']>;
-  location?: Maybe<Location>;
-  vehicles_launched?: Maybe<Array<Maybe<Scalars['String']>>>;
-  attempted_launches?: Maybe<Scalars['Int']>;
-  successful_launches?: Maybe<Scalars['Int']>;
-  wikipedia?: Maybe<Scalars['String']>;
-  details?: Maybe<Scalars['String']>;
-  site_id?: Maybe<Scalars['String']>;
-  site_name_long?: Maybe<Scalars['String']>;
-};
-
 export type Location = {
   __typename?: 'Location';
   name?: Maybe<Scalars['String']>;
@@ -372,11 +528,6 @@ export type Mission = {
   twitter?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
 };
-
-export enum Order {
-  Asc = 'asc',
-  Desc = 'desc'
-}
 
 export type Payload = {
   __typename?: 'Payload';
@@ -432,165 +583,6 @@ export type Position = {
 export type PressurizedCapsule = {
   __typename?: 'PressurizedCapsule';
   payload_volume?: Maybe<PayloadVolume>;
-};
-
-export type Query = {
-  __typename?: 'Query';
-  capsule?: Maybe<Capsule>;
-  capsules?: Maybe<Array<Maybe<Capsule>>>;
-  core?: Maybe<Core>;
-  cores?: Maybe<Array<Maybe<Core>>>;
-  dragon?: Maybe<Dragon>;
-  dragons?: Maybe<Array<Maybe<Dragon>>>;
-  history?: Maybe<Array<Maybe<History>>>;
-  info?: Maybe<Info>;
-  landingpad?: Maybe<Landingpad>;
-  landingpads?: Maybe<Array<Maybe<Landingpad>>>;
-  launch?: Maybe<Launch>;
-  launches?: Maybe<Array<Maybe<Launch>>>;
-  launchpad?: Maybe<Launchpad>;
-  launchpads?: Maybe<Array<Maybe<Launchpad>>>;
-  mission?: Maybe<Mission>;
-  missions?: Maybe<Array<Maybe<Mission>>>;
-  payload?: Maybe<Payload>;
-  payloads?: Maybe<Array<Maybe<Payload>>>;
-  roadster?: Maybe<Roadster>;
-  rocket?: Maybe<Rocket>;
-  rockets?: Maybe<Array<Maybe<Rocket>>>;
-  ship?: Maybe<Ship>;
-  ships?: Maybe<Array<Maybe<Ship>>>;
-};
-
-
-export type QueryCapsuleArgs = {
-  capsule_serial: Scalars['String'];
-};
-
-
-export type QueryCapsulesArgs = {
-  range?: Maybe<CapsuleRange>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCoreArgs = {
-  core_serial: Scalars['String'];
-};
-
-
-export type QueryCoresArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryDragonArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryDragonsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryHistoryArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryLandingpadArgs = {
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryLandingpadsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryLaunchArgs = {
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryLaunchesArgs = {
-  range?: Maybe<LaunchRange>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
-  ids?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-
-export type QueryLaunchpadArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryLaunchpadsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryMissionArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryMissionsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryPayloadArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryPayloadsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryRocketArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryRocketsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShipArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryShipsArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order?: Maybe<Order>;
-  sort?: Maybe<Scalars['String']>;
 };
 
 export type Roadster = {
@@ -736,21 +728,27 @@ export type TrunkCargo = {
   unpressurized_cargo?: Maybe<Scalars['Boolean']>;
 };
 
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
 
-export type LaunchesInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+export type LaunchesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LaunchesInfoQuery = (
+export type LaunchesQuery = (
   { __typename?: 'Query' }
   & { launches?: Maybe<Array<Maybe<(
     { __typename?: 'Launch' }
     & Pick<Launch, 'mission_id' | 'mission_name' | 'launch_success' | 'launch_year' | 'details'>
-    & { links ?: Maybe<(
-      { __typename?: 'LaunchLinks'}
+    & { links?: Maybe<(
+      { __typename?: 'LaunchLinks' }
       & Pick<LaunchLinks, 'article_link' | 'wikipedia' | 'video_link'>
-    )>}
-    )>>> }
+    )> }
+  )>>> }
 );
+
 
 export const LaunchesDocument = gql`
     query Launches {
@@ -781,17 +779,14 @@ export const LaunchesDocument = gql`
  * @example
  * const { data, loading, error } = useLaunchesQuery({
  *   variables: {
- 
  *   },
  * });
  */
-export function useLaunchesQuery(baseOptions: Apollo.QueryHookOptions<LaunchesQuery, LaunchesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchesQuery, LaunchesQueryVariables>(LaunchesDocument, options);
+export function useLaunchesQuery(baseOptions?: Apollo.QueryHookOptions<LaunchesQuery, LaunchesQueryVariables>) {
+        return Apollo.useQuery<LaunchesQuery, LaunchesQueryVariables>(LaunchesDocument, baseOptions);
       }
 export function useLaunchesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchesQuery, LaunchesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchesQuery, LaunchesQueryVariables>(LaunchesDocument, options);
+          return Apollo.useLazyQuery<LaunchesQuery, LaunchesQueryVariables>(LaunchesDocument, baseOptions);
         }
 export type LaunchesQueryHookResult = ReturnType<typeof useLaunchesQuery>;
 export type LaunchesLazyQueryHookResult = ReturnType<typeof useLaunchesLazyQuery>;
